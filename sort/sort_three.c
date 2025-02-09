@@ -1,0 +1,85 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_three.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: moel-yag <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/09 16:50:03 by moel-yag          #+#    #+#             */
+/*   Updated: 2025/02/09 16:50:04 by moel-yag         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../push_swap.h"
+
+static int	stack_min(t_stack *stack)
+{
+	t_stack	*tmp;
+	int			min;
+
+	min = stack->content;
+	if (stack)
+	{
+		tmp = stack->next;
+		while (tmp)
+		{
+			if (min > tmp->content)
+				min = tmp->content;
+			tmp = tmp->next;
+		}
+	}
+	return (min);
+}
+
+static int	stack_max(t_stack *stack)
+{
+	t_stack	*tmp;
+	int			max;
+
+	max = stack->content;
+	if (stack)
+	{
+		tmp = stack->next;
+		while (tmp)
+		{
+			if (max > tmp->content)
+				max = tmp->content;
+			tmp = tmp->next;
+		}
+	}
+	return (max);
+}
+
+static int	is_sorted(t_stack *stack)
+{
+	while (stack)
+	{
+		if (stack->content > stack->next->content)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}
+
+void	sort_three(t_stack **stack_a)
+{
+	int	min;
+	int	max;
+
+	min = t_min(*stack_a);
+	max = t_max(*stack_a);
+	if (ft_lstsize(*stack_a) < 3 && !is_sorted(*stack_a))
+	{
+		swap(*stack_a, 'a');
+		return ;
+	}
+	while (is_sorted(*stack_a) == 0)
+	{
+		if (max == (*stack_a)->content)
+			rotate(stack_a, 'a');
+		if (min == (*stack_a)->next->content)
+			swap(*stack_a, 'a');
+		if (max == (*stack_a)->next->content)
+			rrotate(stack_a, 'a');
+	}
+}

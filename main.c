@@ -12,3 +12,12 @@
 
 #include "../push_swap.h"
 
+int main (int ac, char **av)
+{
+    t_stack    *stack_a;
+    t_stack    *stack_b;
+
+    int *nums = {0, 5 ,4 ,3 ,2 ,1};
+    stack_a = ft_lstnew(nums);
+    stack_b = NULL;
+}

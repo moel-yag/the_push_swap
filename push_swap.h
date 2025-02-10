@@ -29,6 +29,8 @@ void	rrotate_r(t_stack **stack_a, t_stack **stack_b, char c);
 void	sort_three(t_stack **stack_a);
 void	sort_four(t_stack **stack_a, t_stack **stack_b);
 void	sort_five(t_stack **stack_a, t_stack **stack_b);
-void	sort_stack(t_stack **stack_a, t_stack **stack_b);
+void	sort_stack(t_stack **stack_a, t_stack **stack_b, int flag);
+void	ft_free(char **s);
+void	check_dup(char **numbers);
 
 #endif

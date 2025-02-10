@@ -66,11 +66,11 @@ void	sort_three(t_stack **stack_a)
 	int	min;
 	int	max;
 
-	min = t_min(*stack_a);
-	max = t_max(*stack_a);
+	min = stack_min(*stack_a);
+	max = stack_max(*stack_a);
 	if (ft_lstsize(*stack_a) < 3 && !is_sorted(*stack_a))
 	{
-		swap(*stack_a, 'a');
+		swap(stack_a, 'a');
 		return ;
 	}
 	while (is_sorted(*stack_a) == 0)
@@ -78,7 +78,7 @@ void	sort_three(t_stack **stack_a)
 		if (max == (*stack_a)->content)
 			rotate(stack_a, 'a');
 		if (min == (*stack_a)->next->content)
-			swap(*stack_a, 'a');
+			swap(stack_a, 'a');
 		if (max == (*stack_a)->next->content)
 			rrotate(stack_a, 'a');
 	}

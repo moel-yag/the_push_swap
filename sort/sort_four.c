@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-static int	t_min(t_stack *stack)
+static int	stack_min(t_stack *stack)
 {
 	t_stack	*tmp;
 	int			min;
@@ -55,10 +55,10 @@ void	sort_four(t_stack **stack_a, t_stack **stack_b)
 	t_stack	*tmp;
 	int			min;
 
-	if (!is_sorted(stack_a))
+	if (!is_sorted(*stack_a))
 	{
 		tmp = *stack_a;
-		min = t_min(tmp);
+		min = stack_min(tmp);
 		if (min == 1)
 			swap(stack_a, 'a');
 		else if (min == 2)

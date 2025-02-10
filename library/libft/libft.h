@@ -25,7 +25,7 @@
 typedef struct s_list
 {
 	int				content;
-	int				*index;
+	int				index;
 	struct s_list	*next;
 }					t_stack;
 int					ft_isalpha(int c);

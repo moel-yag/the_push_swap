@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-static int	t_min(t_stack *stack)
+static int	stack_min(t_stack *stack)
 {
 	t_stack	*tmp;
 	int			i;
@@ -56,7 +56,7 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b)
 	int			min;
 
 	tmp = *stack_a;
-	min = t_min(tmp);
+	min = stack_min(tmp);
 	if (!is_sorted(*stack_a))
 	{
 		if (min == 1)

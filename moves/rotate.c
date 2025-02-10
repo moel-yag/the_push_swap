@@ -16,6 +16,7 @@ void	rotate(t_stack **stack, char c)
 {
 	t_stack	*top;
 
+	top = NULL;
 	if (ft_lstsize(*stack) > 1)
 	{
 		*stack = (*stack)->next;
@@ -30,7 +31,7 @@ void	rotate(t_stack **stack, char c)
 
 void	rotate_r(t_stack **stack_a, t_stack **stack_b, char c)
 {
-	if (ft_lstsize(stack_a) > 1 && ft_lstsize(stack_b) > 1)
+	if (ft_lstsize(*stack_a) > 1 && ft_lstsize(*stack_b) > 1)
 	{
 		rotate(stack_a, 'a');
 		rotate(stack_b, 'b');
@@ -63,7 +64,7 @@ void	rrotate(t_stack **stack, char c)
 
 void	rrotate_r(t_stack **stack_a, t_stack **stack_b, char c)
 {
-	if (ft_lstsize(stack_a) > 1 && ft_lstsize(stack_b) > 1)
+	if (ft_lstsize(*stack_a) > 1 && ft_lstsize(*stack_b) > 1)
 	{
 		rrotate(stack_a, c);
 		rrotate(stack_b, c);

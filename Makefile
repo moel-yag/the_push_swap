@@ -13,9 +13,9 @@ FILES = moves/push.c moves/rotate.c moves/swap.c \
 
 F_OBJ = $(FILES:.c=.o)
 
-$(NAME): $(F_OBJ)
+$(NAME): $(FILES)
 	make -C $(LIBFT)
-	cc $(CFLAGS)  $? $(LIBFT_NAME) -O $@
+	cc $(CFLAGS)  $(FILES) $(LIBFT_NAME) -o	$(NAME)
 
 all : $(NAME)
 
@@ -23,7 +23,6 @@ clean :
 		make clean -C $(LIBFT)
 		rm -f $(F_OBJ)
 fclean : clean
-		make fclean -C $(LIBFT)
 		rm -f $(NAME)
 
 re : fclean all

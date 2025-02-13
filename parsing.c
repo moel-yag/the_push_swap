@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	del(void *content)
+void	del(int content)
 {
 	(void)content;
 }
@@ -21,7 +21,7 @@ static void add_to_stack(t_stack **stack, int num)
 {
 	t_stack *new_node;
 
-	new_node = ft_lstnew(&num);
+	new_node = ft_lstnew(num);
 	if (!new_node)
 	{
 		ft_lstclear(stack, del);

@@ -37,6 +37,6 @@ void	ft_error(char *msg);
 void	ft_free_split(char **split);
 int		is_valid_number(char *str);
 int		has_duplicates(t_stack *stack, int num);
-void	del(void *content);
+void	del(int content);
 
 #endif

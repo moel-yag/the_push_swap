@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static void	del(void *content)
+void	del(void *content)
 {
 	(void)content;
 }

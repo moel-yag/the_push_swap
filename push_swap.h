@@ -31,6 +31,9 @@ void	sort_four(t_stack **stack_a, t_stack **stack_b);
 void	sort_five(t_stack **stack_a, t_stack **stack_b);
 void	sort_stack(t_stack **stack_a, t_stack **stack_b, int flag);
 void	ft_free(char **s);
-void	check_dup(char **numbers);
+void	parse_input(t_stack **stack, int argc, char **argv);
+long	ft_atol(const char *str);
+void	ft_error(char *msg);
+void	ft_free_split(char **split);
 
 #endif

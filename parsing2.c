@@ -6,7 +6,7 @@
 /*   By: moel-yag <moel-yag@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:56:02 by moel-yag          #+#    #+#             */
-/*   Updated: 2025/02/13 12:02:14 by moel-yag         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:54:41 by moel-yag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,46 @@ int	has_duplicates(t_stack *stack, int num)
 		stack = stack->next;
 	}
 	return (0);
+}
+
+long ft_atol(const char *str)
+{
+	long result;
+	int sign;
+
+	result = 0;
+	sign = 1;
+	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
+		str++;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign = -1;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		result = result * 10 + (*str - '0');
+		str++;
+	}
+	return (result * sign);
+}
+
+void ft_error(char *msg)
+{
+	ft_putendl_fd(msg, 2);
+	exit(1);
+}
+
+void ft_free_split(char **split)
+{
+	int i;
+
+	i = 0;
+	while (split[i])
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
 }

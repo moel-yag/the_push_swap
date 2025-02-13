@@ -12,95 +12,48 @@
 
 #include "push_swap.h"
 
-static void	check_is_number_no_dup(char	**numbers)
-{
-	long long	num;
-	int			i;
-	int			j;
+#include "../push_swap.h"
 
-	i = 0;
-	check_dup(numbers);
-	while (numbers[i])
-	{
-		check_int(numbers[i]);
-		j = 0;
-		while (numbers[i] && numbers[i][j])
-		{
-			num = numbers[i][j];
-			if ((num == '-' || num == '+') && numbers[i][j + 1])
-				j++;
-			if (!ft_isdigit(numbers[i][j]))
-			{
-				ft_free(numbers);
-				write(2, "Error\n", 6);
-				exit(1);
-			}
-			j++;
-		}
-		i++;
-	}
+// Function to initialize Stack A with parsed input
+static void	initialize_stack(t_stack **stack_a, int argc, char **argv)
+{
+	parse_input(stack_a, argc, argv);
+	if (!*stack_a)
+		ft_error("Error: Stack initialization failed");
 }
 
-static char	**check_args(int ac, char *av[])
+// Function to sort the stack based on its size
+static void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 {
-	char	**split_numbers;
-	int		i;
-	int		j;
+	int	size;
 
-	i = 1;
-	while (i < ac)
-	{
-		j = 0;
-		while (av[i][j] && (av[i][j] == ' ' || av[i][j] == '\t'))
-			j++;
-		if (!av[i][j])
-		{
-			write(2, "Error\n", 6);
-			exit(1);
-		}
-		i++;
-	}
-	split_numbers = get_args(ac, av);
-	check_is_number_no_dup(split_numbers);
-	return (split_numbers);
+	size = ft_lstsize(*stack_a);
+	if (size == 2)
+		swap(stack_a, 'a');
+	else if (size == 3)
+		sort_three(stack_a);
+	else if (size == 4)
+		sort_four(stack_a, stack_b);
+	else if (size == 5)
+		sort_five(stack_a, stack_b);
+	else
+		sort_stack(stack_a, stack_b, size / 2);
 }
 
-static void	sort_chooser(t_stack **stack_a, t_stack **stack_b)
+// Main function
+int	main(int argc, char **argv)
 {
-	if (is_sort(*stack_a))
-	{
-		if (ft_lstsize(*stack_a) <= 3)
-			sort_three(stack_a);
-		else if (ft_lstsize(*stack_a) <= 4)
-			sort_four(stack_a, stack_b);
-		else if (ft_lstsize(*stack_a) <= 5)
-			sort_five(stack_a, stack_b);
-		else if (ft_lstsize(*stack_a) <= 100)
-			sort_stack(stack_a, stack_b, 10);
-		else
-			sort_stack(stack_a, stack_b, 30);
-	}
-}
-
-int	main(int ac, char *av[])
-{
-	char	**split_numbers;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
-	if (ac >= 2)
-	{
-		stack_a = NULL;
-		stack_b = NULL;
-		split_numbers = check_args(ac, av);
-		if (!split_numbers)
-			return (0);
-		add_numbers_into_linkedlist(split_numbers, &stack_a);
-		index_list(&stack_a, ft_lstsize(stack_a));
-		sort_chooser(&stack_a, &stack_b);
-		ft_free(split_numbers);
-		ft_lstclear(&stack_a, NULL);
-		ft_lstclear(&stack_b, NULL);
-	}
+	if (argc < 2)
+		return (0); // No input provided
+	stack_a = NULL;
+	stack_b = NULL;
+	initialize_stack(&stack_a, argc, argv);
+	if (check_sort(stack_a))
+		sort_stack(&stack_a, &stack_b);
+	ft_lstclear(&stack_a, del);
+	ft_lstclear(&stack_b, del);
 	return (0);
 }

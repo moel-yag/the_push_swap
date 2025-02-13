@@ -12,58 +12,44 @@
 
 #include "../push_swap.h"
 
-void	ft_free(char **s)
+long ft_atol(const char *str)
 {
-	int	i;
+	long result;
+	int sign;
+
+	result = 0;
+	sign = 1;
+	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
+		str++;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign = -1;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		result = result * 10 + (*str - '0');
+		str++;
+	}
+	return (result * sign);
+}
+
+void ft_error(char *msg)
+{
+	ft_putendl_fd(msg, 2);
+	exit(1);
+}
+
+void ft_free_split(char **split)
+{
+	int i;
 
 	i = 0;
-	if (!s)
-		return ;
-	while (s[i])
+	while (split[i])
 	{
-		free(s[i]);
-		s[i++] = NULL;
+		free(split[i]);
+		i++;
 	}
-	free(s);
-	s = NULL;
+	free(split);
 }
-
-void	check_dup(char **numbers)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	if (numbers[i])
-	{
-		while (numbers[i])
-		{
-			j = i + 1;
-			while (numbers[j])
-			{
-				if (ft_atoi(numbers[j]) == ft_atoi(numbers[i]))
-				{
-					write(2, "Error\n", 6);
-					ft_free(numbers[j]);
-					exit(1);
-				}
-				j++;
-			}
-			i++;
-		}
-	}
-}
-
-static char	remove_tab(char *str)
-{
-	char    *temp;
-    int        i;
-
-    i = 0;
-    while (str[i] && str[i]!= '\t')
-        i++;
-    temp = ft_substr(str, i, ft_strlen(str) - i);
-    free(str);
-    return (*temp);
-}
-

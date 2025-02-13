@@ -10,36 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
-
-static int is_valid_number(char *str)
-{
-  int i;
-
-  i = 0;
-  if (str[i] == '-' || str[i] == '+')
-    i++;
-  if (!str[i])
-    return (0);
-  while (str[i])
-  {
-    if (!ft_isdigit(str[i]))
-      return (0);
-    i++;
-  }
-  return (1);
-}
-
-static int has_duplicates(t_stack *stack, int num)
-{
-  while (stack)
-  {
-    if (stack->content == num)
-      return (1);
-    stack = stack->next;
-  }
-  return (0);
-}
+#include "push_swap.h"
 
 static void	del(void *content)
 {
@@ -48,66 +19,66 @@ static void	del(void *content)
 
 static void add_to_stack(t_stack **stack, int num)
 {
-  t_stack *new_node;
+	t_stack *new_node;
 
-  new_node = ft_lstnew(num);
-  if (!new_node)
-  {
-    ft_lstclear(stack, del);
-    ft_error("Error: Memory allocation failed");
-  }
-  ft_lstadd_back(stack, new_node);
+	new_node = ft_lstnew(num);
+	if (!new_node)
+	{
+		ft_lstclear(stack, del);
+		ft_error("Error: Memory allocation failed");
+	}
+	ft_lstadd_back(stack, new_node);
 }
 
 static void parse_single_string(t_stack **stack, char *str)
 {
-  char **numbers;
-  int i;
-  long num;
+	char **numbers;
+	int i;
+	long num;
 
-  numbers = ft_split(str, ' ');
-  if (!numbers)
-    ft_error("Error: Memory allocation failed");
-  i = 0;
-  while (numbers[i])
-  {
-    if (!is_valid_number(numbers[i]))
-      ft_error("Error: Invalid number");
-    num = ft_atol(numbers[i]);
-    if (num < INT_MIN || num > INT_MAX)
-      ft_error("Error: Number out of range");
-    if (has_duplicates(*stack, (int)num))
-      ft_error("Error: Duplicate number");
-    add_to_stack(stack, (int)num);
-    i++;
-  }
-  ft_free_split(numbers);
+	numbers = ft_split(str, ' ');
+	if (!numbers)
+		ft_error("Error: Memory allocation failed");
+	i = 0;
+	while (numbers[i])
+	{
+		if (!is_valid_number(numbers[i]))
+			ft_error("Error: Invalid number");
+		num = ft_atol(numbers[i]);
+		if (num < INT_MIN || num > INT_MAX)
+			ft_error("Error: Number out of range");
+		if (has_duplicates(*stack, (int)num))
+			ft_error("Error: Duplicate number");
+		add_to_stack(stack, (int)num);
+		i++;
+	}
+	ft_free_split(numbers);
 }
 
 static void parse_multiple_args(t_stack **stack, int argc, char **argv)
 {
-  int i;
-  long num;
+	int i;
+	long num;
 
-  i = 1;
-  while (i < argc)
-  {
-    if (!is_valid_number(argv[i]))
-      ft_error("Error: Invalid number");
-    num = ft_atol(argv[i]);
-    if (num < INT_MIN || num > INT_MAX)
-      ft_error("Error: Number out of range");
-    if (has_duplicates(*stack, (int)num))
-      ft_error("Error: Duplicate number");
-    add_to_stack(stack, (int)num);
-    i++;
-  }
+	i = 1;
+	while (i < argc)
+	{
+		if (!is_valid_number(argv[i]))
+			ft_error("Error: Invalid number");
+		num = ft_atol(argv[i]);
+		if (num < INT_MIN || num > INT_MAX)
+			ft_error("Error: Number out of range");
+		if (has_duplicates(*stack, (int)num))
+			ft_error("Error: Duplicate number");
+		add_to_stack(stack, (int)num);
+		i++;
+	}
 }
 
 void parse_input(t_stack **stack, int argc, char **argv)
 {
-  if (argc == 2)
-    parse_single_string(stack, argv[1]);
-  else
-    parse_multiple_args(stack, argc, argv);
+	if (argc == 2)
+		parse_single_string(stack, argv[1]);
+	else
+		parse_multiple_args(stack, argc, argv);
 }

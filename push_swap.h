@@ -35,5 +35,7 @@ void	parse_input(t_stack **stack, int argc, char **argv);
 long	ft_atol(const char *str);
 void	ft_error(char *msg);
 void	ft_free_split(char **split);
+int		is_valid_number(char *str);
+int		has_duplicates(t_stack *stack, int num);
 
 #endif

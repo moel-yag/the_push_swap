@@ -12,8 +12,6 @@
 
 #include "push_swap.h"
 
-#include "../push_swap.h"
-
 // Function to initialize Stack A with parsed input
 static void	initialize_stack(t_stack **stack_a, int argc, char **argv)
 {
@@ -22,8 +20,7 @@ static void	initialize_stack(t_stack **stack_a, int argc, char **argv)
 		ft_error("Error: Stack initialization failed");
 }
 
-// Function to sort the stack based on its size
-static void	sort_stack(t_stack **stack_a, t_stack **stack_b)
+static void	sort_list(t_stack **stack_a, t_stack **stack_b)
 {
 	int	size;
 
@@ -40,19 +37,18 @@ static void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 		sort_stack(stack_a, stack_b, size / 2);
 }
 
-// Main function
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
 	if (argc < 2)
-		return (0); // No input provided
+		return (0);
 	stack_a = NULL;
 	stack_b = NULL;
 	initialize_stack(&stack_a, argc, argv);
 	if (check_sort(stack_a))
-		sort_stack(&stack_a, &stack_b);
+		sort_list(&stack_a, &stack_b);
 	ft_lstclear(&stack_a, del);
 	ft_lstclear(&stack_b, del);
 	return (0);

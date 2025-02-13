@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: moel-yag <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/13 11:44:44 by moel-yag          #+#    #+#             */
+/*   Updated: 2025/02/13 11:44:46 by moel-yag         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
-// Function to check if a string is a valid integer
 static int is_valid_number(char *str)
 {
   int i;
@@ -9,26 +20,25 @@ static int is_valid_number(char *str)
   if (str[i] == '-' || str[i] == '+')
     i++;
   if (!str[i])
-    return (0); // Empty string after sign
+    return (0);
   while (str[i])
   {
     if (!ft_isdigit(str[i]))
-      return (0); // Non-digit character
+      return (0);
     i++;
   }
   return (1);
 }
 
-// Function to check for duplicate numbers in the stack
 static int has_duplicates(t_stack *stack, int num)
 {
   while (stack)
   {
     if (stack->content == num)
-      return (1); // Duplicate found
+      return (1);
     stack = stack->next;
   }
-  return (0); // No duplicates
+  return (0);
 }
 
 static void	del(void *content)
@@ -36,7 +46,6 @@ static void	del(void *content)
 	(void)content;
 }
 
-// Function to add a number to the stack
 static void add_to_stack(t_stack **stack, int num)
 {
   t_stack *new_node;
@@ -50,7 +59,6 @@ static void add_to_stack(t_stack **stack, int num)
   ft_lstadd_back(stack, new_node);
 }
 
-// Function to parse a single string of numbers
 static void parse_single_string(t_stack **stack, char *str)
 {
   char **numbers;
@@ -76,7 +84,6 @@ static void parse_single_string(t_stack **stack, char *str)
   ft_free_split(numbers);
 }
 
-// Function to parse multiple arguments
 static void parse_multiple_args(t_stack **stack, int argc, char **argv)
 {
   int i;
@@ -97,11 +104,10 @@ static void parse_multiple_args(t_stack **stack, int argc, char **argv)
   }
 }
 
-// Main parsing function
 void parse_input(t_stack **stack, int argc, char **argv)
 {
   if (argc == 2)
-    parse_single_string(stack, argv[1]); // Single string input
+    parse_single_string(stack, argv[1]);
   else
-    parse_multiple_args(stack, argc, argv); // Multiple arguments
+    parse_multiple_args(stack, argc, argv);
 }

@@ -21,7 +21,7 @@ static void add_to_stack(t_stack **stack, int num)
 {
 	t_stack *new_node;
 
-	new_node = ft_lstnew((void *)num);
+	new_node = ft_lstnew(&num);
 	if (!new_node)
 	{
 		ft_lstclear(stack, del);

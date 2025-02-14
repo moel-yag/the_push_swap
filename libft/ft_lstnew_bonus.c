@@ -16,10 +16,10 @@ t_stack	*ft_lstnew(int content)
 {
 	t_stack	*new_node;
 
-	// new_node = (t_stack *)malloc(sizeof(t_stack));
-	// if (!new_node)
-	// 	return (NULL);
-	new_node = NULL;
+	new_node = (t_stack *)malloc(sizeof(t_stack));
+	if (!new_node)
+		return (NULL);
+	// new_node = NULL;
 	new_node->content = content;
 	new_node->next = NULL;
 	new_node->index = 0;

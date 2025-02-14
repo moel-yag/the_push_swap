@@ -38,6 +38,8 @@ static void	sort_list(t_stack **stack_a, t_stack **stack_b)
 
 static int	is_sorted(t_stack *stack)
 {
+	if (!stack)
+		return 1;
 	while (stack->next)
 	{
 		if (stack->content > stack->next->content)

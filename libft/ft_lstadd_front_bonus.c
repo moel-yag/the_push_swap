@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void	ft_lstadd_front(t_stack **lst, t_stack *new)
+void	ft_lstadd_front(t_stack **lst, t_stack *new)  //lst == stack_b  new = head_stack_a
 {
 	if (!lst || !new)
 		return ;

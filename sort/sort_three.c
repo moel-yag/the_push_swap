@@ -52,7 +52,9 @@ static int	stack_max(t_stack *stack)
 
 static int	is_sorted(t_stack *stack)
 {
-	while (stack)
+	if (!stack)
+		return 1;
+	while (stack->next)
 	{
 		if (stack->content > stack->next->content)
 			return (0);

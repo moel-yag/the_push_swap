@@ -19,6 +19,9 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 
+////////////////////////////////////////////
+// void print_list(t_stack *head);
+///////////////////////////////////////
 void	push(t_stack **src, t_stack **dst, char c);
 void	swap(t_stack **stack, char c);
 void	swap_s(t_stack **stack_a, t_stack **stack_b, char c);
@@ -38,5 +41,5 @@ void	ft_free_split(char **split);
 int		is_valid_number(char *str);
 int		has_duplicates(t_stack *stack, int num);
 void	del(int content);
-
+void	give_index_to_each_node(t_stack **stack);
 #endif

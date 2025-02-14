@@ -15,13 +15,18 @@
 void	rotate(t_stack **stack, char c)
 {
 	t_stack	*top;
+	t_stack	*last;
 
-	top = NULL;
+	top = *stack;
 	if (ft_lstsize(*stack) > 1)
 	{
 		*stack = (*stack)->next;
+		last = *stack;
 		top->next = NULL;
-		ft_lstadd_back(stack, top);
+		// ft_lstadd_back(stack, top);
+		while (last->next)
+			last = last->next;
+		last->next = top;
 		if (c == 'a')
 			write(1, "ra\n", 3);
 		else if (c == 'b')

@@ -12,6 +12,26 @@
 
 #include "push_swap.h"
 
+// void print_list(t_stack *head)
+// {
+// 	if (head == NULL)
+// 	{
+//         printf("Stack is empty\n");
+//         return ;
+//     }
+//     t_stack *current = head;
+// 	printf("stack: ");
+//     while (1)
+//     {
+//         printf("%d[%d] -> ", current->content, current->index);
+//         current = current->next;
+// 		if (current == NULL)
+// 		{
+// 			printf("NULL\n");
+//             break;
+// 		}
+//     }
+// }
 static void	initialize_stack(t_stack **stack_a, int argc, char **argv)
 {
 	parse_input(stack_a, argc, argv);
@@ -44,6 +64,7 @@ static int	is_sorted(t_stack *stack)
 	{
 		if (stack->content > stack->next->content)
 			return (0);
+		stack = stack->next;
 	}
 	return (1);
 }
@@ -58,7 +79,7 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	initialize_stack(&stack_a, argc, argv);
-	if (is_sorted(stack_a))
+	if (!is_sorted(stack_a))
 		sort_list(&stack_a, &stack_b);
 	ft_lstclear(&stack_a, del);
 	ft_lstclear(&stack_b, del);

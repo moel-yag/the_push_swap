@@ -22,12 +22,12 @@ static int	find_index(t_stack *stack_a, int value)
 		if (stack_a->content == value)
 			return (index);
 		index++;
-		stack_a = stack_a->next;
+		// stack_a = stack_a->next;
 	}
 	return (-1);
 }
 
-static int	get_value(t_stack *stack_b, int index)
+static int	get_index_value(t_stack *stack_b, int index)
 {
 	int	val;
 
@@ -36,10 +36,11 @@ static int	get_value(t_stack *stack_b, int index)
 		if (stack_b->index == index)
 		{
 			val = stack_b->content;
-			return (val);
+			break;
 		}
+		stack_b = stack_b->next;
 	}
-	return (-1);
+	return (val);
 }
 
 static void	send_to_b(t_stack **stack_a, t_stack **stack_b, int flag)
@@ -47,7 +48,7 @@ static void	send_to_b(t_stack **stack_a, t_stack **stack_b, int flag)
 	int	i;
 
 	i = 0;
-	while (stack_a)
+	while (*stack_a)
 	{
 		if ((*stack_a)->index <= i)
 		{
@@ -72,9 +73,9 @@ static void	back_to_a(t_stack **stack_a, t_stack **stack_b)
 	int	value;
 
 	max_index = ft_lstsize(*stack_b) - 1;
-	while (ft_lstsize(*stack_b))
+	while (*stack_b)
 	{
-		value = get_value(*stack_b, max_index);
+		value = get_index_value(*stack_b, max_index);
 		stack_index = find_index(*stack_b, value);
 		while ((*stack_b)->content != value)
 		{
@@ -93,6 +94,9 @@ static void	back_to_a(t_stack **stack_a, t_stack **stack_b)
 
 void	sort_stack(t_stack **stack_a, t_stack **stack_b, int flag)
 {
+	// print_list(*stack_a);
 	send_to_b(stack_a, stack_b, flag);
+	// print_list(*stack_b);
+	exit(0);
 	back_to_a(stack_a, stack_b);
 }

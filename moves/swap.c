@@ -25,9 +25,9 @@ void	swap(t_stack **stack, char c)
 		ft_lstadd_front(stack, first);
 		ft_lstadd_front(stack, second);
 		if (c == 'a')
-			write(1, "sa", 3);
+			write(1, "sa\n", 3);
 		else if (c == 'b')
-			write(1, "sb", 3);
+			write(1, "sb\n", 3);
 	}
 }
 

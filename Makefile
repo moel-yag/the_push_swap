@@ -9,7 +9,7 @@ LIBFT_NAME = libft/libft.a
 
 FILES = moves/push.c moves/rotate.c moves/swap.c \
 	sort/sort_three.c sort/sort_four.c sort/sort_five.c \
-	sort/sort_stack.c help_functions.c parsing.c parsing2.c main.c \
+	sort/sort_stack.c help_functions.c parsing.c parsing_help.c main.c \
 
 F_OBJ = $(FILES:.c=.o)
 

@@ -19,23 +19,20 @@ OBJ = $(SRC:.c=.o)
 
 BONUS_O = $(BONUS_FILES:.c=.o)
 
-$(NAME): $(OBJ)
-	ar -rc $(NAME) $(OBJ)
+$(NAME): $(OBJ) $(BONUS_O)
+	ar -rc $(NAME) $(OBJ) $(BONUS_O)
 
-all: $(NAME) bonus
+all: $(NAME)
 
-bonus : $(BONUS_O)
-
-$(BONUS_O): $(BONUS_FILES)
-	cc $(CFLAGS) -c $(BONUS_FILES)
-	ar -rc $(NAME) $(BONUS_O)
+%.o: %.c
+	cc $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ) $(BONUS_O)
 
 fclean: clean
-	rm -f $(NAME) $(BONUS_O)
+	rm -f $(NAME)
 
 re: fclean all
 
-.PHONY : clean fclean re all
+.PHONY : clean fclean re all bonus

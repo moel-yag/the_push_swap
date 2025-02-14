@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <limits.h>
 # include <stdlib.h>
-# include "library/libft/libft.h"
+# include "libft/libft.h"
 
 void	push(t_stack **src, t_stack **dst, char c);
 void	swap(t_stack **stack, char c);

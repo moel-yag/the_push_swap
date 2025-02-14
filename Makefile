@@ -1,11 +1,11 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -g -Wall -Wextra -Werror -fsanitize=address
 
 NAME = push_swap
 
-LIBFT = library/libft/
+LIBFT = libft/
 
-LIBFT_NAME = library/libft/libft.a
+LIBFT_NAME = libft/libft.a
 
 FILES = moves/push.c moves/rotate.c moves/swap.c \
 	sort/sort_three.c sort/sort_four.c sort/sort_five.c \
@@ -13,11 +13,15 @@ FILES = moves/push.c moves/rotate.c moves/swap.c \
 
 F_OBJ = $(FILES:.c=.o)
 
+all : $(LIBFT_NAME) $(NAME)
+
 $(NAME): $(F_OBJ)
-	make -C $(LIBFT)
 	$(CC) $(CFLAGS)  $(F_OBJ) $(LIBFT_NAME) -o	$@
 
-all : $(NAME)
+$(LIBFT_NAME): $(F_OBJ)
+	make -C $(LIBFT)
+
+
 
 clean :
 		make clean -C $(LIBFT)

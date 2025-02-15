@@ -74,8 +74,8 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b)
 		}
 		else if (min == 4)
 			rrotate(stack_a, 'a');
-		push(stack_a, stack_b, 'a');
+		push(stack_a, stack_b, 'b');
 		sort_four(stack_a, stack_b);
-		push(stack_b, stack_a, 'b');
+		push(stack_b, stack_a, 'a');
 	}
 }

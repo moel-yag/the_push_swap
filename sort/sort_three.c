@@ -42,7 +42,7 @@ static int	stack_max(t_stack *stack)
 		tmp = stack->next;
 		while (tmp)
 		{
-			if (max > tmp->content)
+			if (max < tmp->content)
 				max = tmp->content;
 			tmp = tmp->next;
 		}
@@ -75,7 +75,7 @@ void	sort_three(t_stack **stack_a)
 		swap(stack_a, 'a');
 		return ;
 	}
-	while (is_sorted(*stack_a) == 0)
+	while (!is_sorted(*stack_a))
 	{
 		if (max == (*stack_a)->content)
 			rotate(stack_a, 'a');

@@ -31,6 +31,7 @@ static int	get_index_value(t_stack *stack_b, int index)
 {
 	int	val;
 
+	val = 0;
 	while (stack_b)
 	{
 		if (stack_b->index == index)

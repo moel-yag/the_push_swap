@@ -79,8 +79,11 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	initialize_stack(&stack_a, argc, argv);
-	if (!is_sorted(stack_a))
+	// printf("initialized stack\n");
+	if (is_sorted(stack_a) == 0)
+	{
 		sort_list(&stack_a, &stack_b);
+	}
 	ft_lstclear(&stack_a, del);
 	ft_lstclear(&stack_b, del);
 	return (0);

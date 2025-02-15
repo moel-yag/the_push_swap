@@ -46,6 +46,7 @@ static int	is_sorted(t_stack *stack)
 	{
 		if (stack->content > stack->next->content)
 			return (0);
+		stack = stack->next;
 	}
 	return (1);
 }

@@ -48,17 +48,20 @@ void	rotate_r(t_stack **stack_a, t_stack **stack_b, char c)
 void	rrotate(t_stack **stack, char c)
 {
 	t_stack	*last;
-	t_stack	*stack_clone;
+	t_stack	*tmp;
 	int			i;
 
 	if (ft_lstsize(*stack) > 1)
 	{
 		last = ft_lstlast(*stack);
-		stack_clone = *stack;
+		tmp = *stack;
 		i = 1;
 		while (i < ft_lstsize(*stack) - 1)
-			stack_clone = stack_clone->next;
-		stack_clone->next = NULL;
+		{
+			tmp = tmp->next;
+			i++;
+		}
+		tmp->next = NULL;
 		ft_lstadd_front(stack, last);
 		if (c == 'a')
 			write(1, "rra\n", 4);

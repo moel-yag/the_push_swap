@@ -22,7 +22,7 @@ static int	find_index(t_stack *stack_a, int value)
 		if (stack_a->content == value)
 			return (index);
 		index++;
-		// stack_a = stack_a->next;
+		stack_a = stack_a->next;
 	}
 	return (-1);
 }
@@ -98,6 +98,6 @@ void	sort_stack(t_stack **stack_a, t_stack **stack_b, int flag)
 	// print_list(*stack_a);
 	send_to_b(stack_a, stack_b, flag);
 	// print_list(*stack_b);
-	exit(0);
+	// exit(0);
 	back_to_a(stack_a, stack_b);
 }

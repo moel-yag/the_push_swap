@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -g -Wall -Wextra -Werror -fsanitize=address
+CFLAGS = -g -Wall -Wextra -Werror
 
 NAME = push_swap
 
@@ -20,8 +20,6 @@ $(NAME): $(F_OBJ)
 
 $(LIBFT_NAME): $(F_OBJ)
 	make -C $(LIBFT)
-
-
 
 clean :
 		make clean -C $(LIBFT)

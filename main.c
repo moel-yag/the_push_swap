@@ -53,7 +53,7 @@ static void	sort_list(t_stack **stack_a, t_stack **stack_b)
 	else if (size == 5)
 		sort_five(stack_a, stack_b);
 	else
-		sort_stack(stack_a, stack_b, size / 2);
+		sort_stack(stack_a, stack_b, size / 15);
 }
 
 static int	is_sorted(t_stack *stack)

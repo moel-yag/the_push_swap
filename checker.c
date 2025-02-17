@@ -21,27 +21,27 @@ void	initialize_stack(t_stack **stack_a, int argc, char **argv)
 
 void	apply_moves(t_stack **stack_a, t_stack **stack_b, char *operation)
 {
-	if (!ft_strncmp(operation, "sa\n"))
+	if (!ft_strncmp(operation, "sa\n", 3))
 		swap(stack_a, 'a');
-	else if (!ft_strncmp(operation, "sb\n"))
+	else if (!ft_strncmp(operation, "sb\n", 3))
 		swap(stack_b, 'b');
-	else if (!ft_strncmp(operation, "ss\n"))
+	else if (!ft_strncmp(operation, "ss\n", 3))
 		swap_s(stack_a, stack_b, 's');
-	else if (!ft_strncmp(operation, "pa\n"))
+	else if (!ft_strncmp(operation, "pa\n", 3))
 		push(stack_a, stack_b, 'a');
-	else if (!ft_strncmp(operation, "pb\n"))
+	else if (!ft_strncmp(operation, "pb\n", 3))
 		push(stack_b, stack_a, 'b');
-	else if (!ft_strncmp(operation, "ra\n"))
+	else if (!ft_strncmp(operation, "ra\n", 3))
 		rotate(stack_a, 'a');
-	else if (!ft_strncmp(operation, "rb\n"))
+	else if (!ft_strncmp(operation, "rb\n", 3))
 		rotate(stack_b, 'b');
-	else if (!ft_strncmp(operation, "rr\n"))
+	else if (!ft_strncmp(operation, "rr\n", 3))
 		rotate_r(stack_a, stack_b, 'r');
-	else if (!ft_strncmp(operation, "rra\n"))
+	else if (!ft_strncmp(operation, "rra\n", 4))
 		rrotate(stack_a, 'a');
-	else if (!ft_strncmp(operation, "rrb\n"))
+	else if (!ft_strncmp(operation, "rrb\n", 4))
 		rrotate(stack_b, 'b');
-	else if (!ft_strncmp(operation, "rrr\n"))
+	else if (!ft_strncmp(operation, "rrr\n", 4))
 		rrotate_r(stack_a, stack_b, 'r');
 	else
 		ft_error("Error\n", operation);
@@ -52,19 +52,18 @@ void	read_moves(t_stack **stack_a, t_stack **stack_b)
 	char	*line;
 
 	line = get_next_line(0);
-	while (!line)
+	while (line) // Corrected loop condition
 	{
 		apply_moves(stack_a, stack_b, line);
 		free(line);
 		line = get_next_line(0);
 	}
-	free(line);
 }
 
 void	checker(t_stack **stack_a, t_stack **stack_b)
 {
 	read_moves(stack_a, stack_b);
-	if (!is_sorted(*stack_a) || !(*stack_b))
+	if (is_sorted(*stack_a) && !(*stack_b)) // Fixed condition
 		ft_putendl_fd("OK", 1);
 	else
 		ft_putendl_fd("KO", 1);

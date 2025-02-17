@@ -24,7 +24,10 @@ all : $(LIBFT_NAME) $(NAME)
 $(NAME): $(F_OBJ)
 	$(CC) $(CFLAGS)  $(F_OBJ) $(LIBFT_NAME) -o	$@
 
+bonus = $(B_NAME)
 
+$(B_NAME): $(B_OBJ)
+	$(CC) $(CFLAGS) $(B_OBJ) $(LIBFT_NAME) -o	$@
 
 $(LIBFT_NAME): $(F_OBJ)
 	make -C $(LIBFT)
@@ -37,4 +40,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY : all clean fclean
+.PHONY : all bonus clean fclean

@@ -1,0 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   swap.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: moel-yag <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/09 16:49:35 by moel-yag          #+#    #+#             */
+/*   Updated: 2025/02/09 16:49:36 by moel-yag         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../push_swap.h"
+
+void	swap_bonus(t_stack **stack)
+{
+	t_stack	*first;
+	t_stack	*second;
+
+	if (ft_lstsize(*stack) > 1)
+	{
+		first = *stack;
+		second = (*stack)->next;
+		*stack = (*stack)->next->next;
+		ft_lstadd_front(stack, first);
+		ft_lstadd_front(stack, second);
+	}
+}
+
+void	swap_s_bonus(t_stack **stack_a, t_stack **stack_b)
+{
+	if (ft_lstsize(*stack_a) > 1 && ft_lstsize(*stack_b) > 1)
+	{
+		swap_bonus(stack_a);
+		swap_bonus(stack_b);
+	}
+}

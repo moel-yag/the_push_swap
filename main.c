@@ -42,17 +42,19 @@ int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	char	*str = NULL;
+	char	*str;
 	int		i;
 
 	if (argc < 2)
 		return (0);
+	*str = NULL;
 	i = 0;
 	while (i < argc)
 	{
 		str = ft_strtrim(argv[i], " ");
 		if (*argv[i] == '\0' || (str[0] == '\0'))
-			ft_error("Error", NULL);
+			ft_error("Error", str);
+		free(str);
 		i++;
 	}
 	stack_a = NULL;
@@ -60,7 +62,6 @@ int	main(int argc, char **argv)
 	initialize_stack(&stack_a, argc, argv);
 	if (is_sorted(stack_a) == 0)
 		sort_list(&stack_a, &stack_b);
-	free(str);
 	ft_lstclear(&stack_a, del);
 	ft_lstclear(&stack_b, del);
 	return (0);

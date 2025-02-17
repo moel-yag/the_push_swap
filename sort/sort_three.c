@@ -65,10 +65,10 @@ void	sort_three(t_stack **stack_a)
 	while (!is_sorted(*stack_a))
 	{
 		if (max == (*stack_a)->content)
-			rotate(stack_a, 'a');
+			rotate(stack_a, 'a', 1);
 		if (min == (*stack_a)->next->content)
 			swap(stack_a, 'a');
 		if (max == (*stack_a)->next->content)
-			rrotate(stack_a, 'a');
+			rrotate(stack_a, 'a', 1);
 	}
 }

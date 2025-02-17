@@ -28,7 +28,6 @@ static void	add_to_stack(t_stack **stack, int num)
 		ft_error("Error", NULL);
 	}
 	ft_lstadd_back(stack, new_node);
-	ft_lstdelone(new_node, del);
 }
 
 static void	parse_single_string(t_stack **stack, char *str)
@@ -83,7 +82,6 @@ static void	parse_multiple_args(t_stack **stack, int argc, char **argv, int i)
 		ft_free_split(numbers);
 		i++;
 	}
-	ft_lstclear(stack, del);
 }
 
 void	parse_input(t_stack **stack, int argc, char **argv)

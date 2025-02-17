@@ -22,27 +22,27 @@ void	initialize_stack(t_stack **stack_a, int argc, char **argv)
 void	apply_moves(t_stack **stack_a, t_stack **stack_b, char *operation)
 {
 	if (!ft_strncmp(operation, "sa\n"))
-		swap(stack_a, 'a');
+		swap_bonus(stack_a);
 	else if (!ft_strncmp(operation, "sb\n"))
-		swap(stack_b, 'b');
+		swap_bonus(stack_b);
 	else if (!ft_strncmp(operation, "ss\n"))
-		swap_s(stack_a, stack_b, 's');
+		swap_s_bonus(stack_a, stack_b);
 	else if (!ft_strncmp(operation, "pa\n"))
-		push(stack_a, stack_b, 'a');
+		push_bonus(stack_b, stack_a);
 	else if (!ft_strncmp(operation, "pb\n"))
-		push(stack_b, stack_a, 'b');
+		push_bonus(stack_a, stack_b);
 	else if (!ft_strncmp(operation, "ra\n"))
-		rotate(stack_a, 'a');
+		rotate_bonus(stack_a, 'a');
 	else if (!ft_strncmp(operation, "rb\n"))
-		rotate(stack_b, 'b');
+		rotate_bonus(stack_b, 'b');
 	else if (!ft_strncmp(operation, "rr\n"))
-		rotate_r(stack_a, stack_b, 'r');
+		rotate_r_bonus(stack_a, stack_b, 'r');
 	else if (!ft_strncmp(operation, "rra\n"))
-		rrotate(stack_a, 'a');
+		rrotate_bonus(stack_a, 'a');
 	else if (!ft_strncmp(operation, "rrb\n"))
-		rrotate(stack_b, 'b');
+		rrotate_bonus(stack_b, 'b');
 	else if (!ft_strncmp(operation, "rrr\n"))
-		rrotate_r(stack_a, stack_b, 'r');
+		rrotate_r_bonus(stack_a, stack_b, 'r');
 	else
 		ft_error("Error\n", operation);
 }
@@ -51,6 +51,7 @@ void	read_moves(t_stack **stack_a, t_stack **stack_b)
 {
 	char	*line;
 
+	signal(SIGINT, SIG_IGN);
 	line = get_next_line(0);
 	while (line)
 	{

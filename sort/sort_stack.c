@@ -54,7 +54,7 @@ static void	send_to_b(t_stack **stack_a, t_stack **stack_b, int flag)
 		if ((*stack_a)->index <= i)
 		{
 			push(stack_a, stack_b, 'b');
-			rotate(stack_b, 'b');
+			rotate(stack_b, 'b', 1);
 			i++;
 		}
 		else if ((*stack_a)->index <= (i + flag))
@@ -63,7 +63,7 @@ static void	send_to_b(t_stack **stack_a, t_stack **stack_b, int flag)
 			i++;
 		}
 		else
-			rotate(stack_a, 'a');
+			rotate(stack_a, 'a', 1);
 	}
 }
 
@@ -81,9 +81,9 @@ static void	back_to_a(t_stack **stack_a, t_stack **stack_b)
 		while ((*stack_b)->content != value)
 		{
 			if (stack_index <= ft_lstsize(*stack_b) / 2)
-				rotate(stack_b, 'b');
+				rotate(stack_b, 'b', 1);
 			else
-				rrotate(stack_b, 'b');
+				rrotate(stack_b, 'b', 1);
 		}
 		if ((*stack_b)->content == value)
 		{

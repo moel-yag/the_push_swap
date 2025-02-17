@@ -12,11 +12,12 @@
 
 #include "../push_swap.h"
 
-void	rotate(t_stack **stack, char c, int flag)
+void	rotate_bonus(t_stack **stack, char c)
 {
 	t_stack	*top;
 	t_stack	*last;
 
+	(void)c;
 	top = *stack;
 	if (ft_lstsize(*stack) > 1)
 	{
@@ -26,30 +27,26 @@ void	rotate(t_stack **stack, char c, int flag)
 		while (last->next)
 			last = last->next;
 		last->next = top;
-		if (c == 'a' && flag == 1)
-			write(1, "ra\n", 3);
-		else if (c == 'b' && flag == 1)
-			write(1, "rb\n", 3);
 	}
 }
 
-void	rotate_r(t_stack **stack_a, t_stack **stack_b, char c)
+void	rotate_r_bonus(t_stack **stack_a, t_stack **stack_b, char c)
 {
+	(void)c;
 	if (ft_lstsize(*stack_a) > 1 && ft_lstsize(*stack_b) > 1)
 	{
-		rotate(stack_a, 'a', 0);
-		rotate(stack_b, 'b', 0);
-		if (c == 'r')
-			write(1, "rr\n", 3);
+		rotate_bonus(stack_a, 'a');
+		rotate_bonus(stack_b, 'b');
 	}
 }
 
-void	rrotate(t_stack **stack, char c, int flag)
+void	rrotate_bonus(t_stack **stack, char c)
 {
 	t_stack	*last;
 	t_stack	*tmp;
 	int		i;
 
+	(void)c;
 	if (ft_lstsize(*stack) > 1)
 	{
 		last = ft_lstlast(*stack);
@@ -62,20 +59,14 @@ void	rrotate(t_stack **stack, char c, int flag)
 		}
 		tmp->next = NULL;
 		ft_lstadd_front(stack, last);
-		if (c == 'a' && flag == 1)
-			write(1, "rra\n", 4);
-		else if (c == 'b' && flag == 1)
-			write(1, "rrb\n", 4);
 	}
 }
 
-void	rrotate_r(t_stack **stack_a, t_stack **stack_b, char c)
+void	rrotate_r_bonus(t_stack **stack_a, t_stack **stack_b, char c)
 {
 	if (ft_lstsize(*stack_a) > 1 && ft_lstsize(*stack_b) > 1)
 	{
-		rrotate(stack_a, c, 0);
-		rrotate(stack_b, c, 0);
+		rrotate_bonus(stack_a, c);
+		rrotate_bonus(stack_b, c);
 	}
-	if (c == 'r')
-		write(1, "rrr\n", 4);
 }

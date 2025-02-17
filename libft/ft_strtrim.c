@@ -22,7 +22,9 @@ char	*ft_strtrim(const char *s1, const char *set)
 	if (s1 && set)
 	{
 		if (s1[0] == '\0')
+		{
 			return (ft_strdup(""));
+		}
 		i = 0;
 		j = ft_strlen(s1);
 		while (s1[i] && ft_strchr(set, s1[i]))

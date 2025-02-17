@@ -53,11 +53,11 @@ void	sort_four(t_stack **stack_a, t_stack **stack_b)
 			swap(stack_a, 'a');
 		else if (min == 2)
 		{
-			rrotate(stack_a, 'a');
-			rrotate(stack_a, 'a');
+			rrotate(stack_a, 'a', 1);
+			rrotate(stack_a, 'a', 1);
 		}
 		else if (min == 3)
-			rrotate(stack_a, 'a');
+			rrotate(stack_a, 'a', 1);
 		push(stack_a, stack_b, 'b');
 		sort_three(stack_a);
 		push(stack_b, stack_a, 'a');

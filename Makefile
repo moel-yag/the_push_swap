@@ -13,8 +13,8 @@ FILES = moves/push.c moves/rotate.c moves/swap.c \
 	sort/sort_stack.c help_functions.c parsing.c parsing_help.c main.c \
 
 BONUS = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
-	checker.c help_functions.c parsing_help.c parsing.c \
-	moves/push.c moves/rotate.c moves/swap.c sort/sort_stack.c
+	bonus/checker.c help_functions.c parsing_help.c parsing.c \
+	bonus/push_bonus.c bonus/rotate_bonus.c bonus/swap_bonus.c
 
 F_OBJ = $(FILES:.c=.o)
 

@@ -19,9 +19,9 @@
 # include "libft/libft.h"
 
 // Function prototypes
-void	apply_operations(t_stack **stack_a, t_stack **stack_b, char *operation);
+void	apply_moves(t_stack **stack_a, t_stack **stack_b, char *operation);
 void	checker(t_stack **stack_a, t_stack **stack_b);
-void	read_operations(t_stack **stack_a, t_stack **stack_b);
+void	read_moves(t_stack **stack_a, t_stack **stack_b);
 void	del(int content);
 
 #endif

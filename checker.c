@@ -12,8 +12,7 @@
 
 #include "push_swap_bonus.h"
 
-// Function to apply a single operation
-void	apply_operations(t_stack **stack_a, t_stack **stack_b, char *operation)
+void	apply_moves(t_stack **stack_a, t_stack **stack_b, char *operation)
 {
 	if (!ft_strcmp(operation, "sa\n"))
 		swap(stack_a, 'a');
@@ -41,32 +40,29 @@ void	apply_operations(t_stack **stack_a, t_stack **stack_b, char *operation)
 		ft_error("Error\n", operation);
 }
 
-// Function to read and apply operations from standard input
-void	read_operations(t_stack **stack_a, t_stack **stack_b)
+void	read_moves(t_stack **stack_a, t_stack **stack_b)
 {
 	char	*line;
 
 	line = get_next_line(0);
 	while (!line)
 	{
-		apply_operations(stack_a, stack_b, line);
+		apply_moves(stack_a, stack_b, line);
 		free(line);
 		line = get_next_line(0);
 	}
 	free(line);
 }
 
-// Main checker function
 void	checker(t_stack **stack_a, t_stack **stack_b)
 {
-	read_operations(stack_a, stack_b);
+	read_moves(stack_a, stack_b);
 	if (check_sort(!*stack_b && *stack_a))
 		ft_putendl_fd("OK", 1);
 	else
 		ft_putendl_fd("KO", 1);
 }
 
-// Main function for the bonus part
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;

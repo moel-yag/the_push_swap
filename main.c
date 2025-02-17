@@ -42,7 +42,7 @@ int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	char *str = NULL;
+	char	*str = NULL;
 	int		i;
 
 	if (argc < 2)

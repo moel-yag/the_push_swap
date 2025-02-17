@@ -17,38 +17,38 @@ void	del(int content)
 	(void)content;
 }
 
-static void add_to_stack(t_stack **stack, int num)
+static void	add_to_stack(t_stack **stack, int num)
 {
-	t_stack *new_node;
+	t_stack	*new_node;
 
 	new_node = ft_lstnew(num);
 	if (!new_node)
 	{
 		ft_lstclear(stack, del);
-		ft_error("Error");
+		ft_error("Error",  NULL);
 	}
 	ft_lstadd_back(stack, new_node);
 }
 
-static void parse_single_string(t_stack **stack, char *str)
+static void	parse_single_string(t_stack **stack, char *str)
 {
-	char **numbers;
-	int i;
-	long num;
+	char	**numbers;
+	int		i;
+	long	num;
 
 	numbers = ft_split(str, ' ');
 	if (!numbers)
-		ft_error("Error");
+		ft_error("Error",  NULL);
 	i = 0;
 	while (numbers[i])
 	{
 		if (!is_valid_number(numbers[i]))
-			ft_error("Error");
+			ft_error("Error",  NULL);
 		num = ft_atol(numbers[i]);
 		if (num < INT_MIN || num > INT_MAX)
-			ft_error("Error");
+			ft_error("Error",  NULL);
 		if (has_duplicates(*stack, (int)num))
-			ft_error("Error");
+			ft_error("Error",  NULL);
 		add_to_stack(stack, (int)num);
 		i++;
 	}
@@ -58,19 +58,29 @@ static void parse_single_string(t_stack **stack, char *str)
 static void parse_multiple_args(t_stack **stack, int argc, char **argv)
 {
 	int i;
+	char **numbers;
 	long num;
 
 	i = 1;
 	while (i < argc)
 	{
-		if (!is_valid_number(argv[i]))
-			ft_error("Error");
-		num = ft_atol(argv[i]);
-		if (num < INT_MIN || num > INT_MAX)
-			ft_error("Error");
-		if (has_duplicates(*stack, (int)num))
-			ft_error("Error");
-		add_to_stack(stack, (int)num);
+		numbers = ft_split(argv[i], ' ');
+		if (!numbers)
+			ft_error("Error", NULL);
+		int j = 0;
+		while (numbers[j])
+		{
+			if (!is_valid_number(numbers[j]))
+				ft_error("Error", NULL);
+			num = ft_atol(numbers[j]);
+			if (num < INT_MIN || num > INT_MAX)
+				ft_error("Error", NULL);
+			if (has_duplicates(*stack, (int)num))
+				ft_error("Error", NULL);
+			add_to_stack(stack, (int)num);
+			j++;
+		}
+		ft_free_split(numbers);
 		i++;
 	}
 }

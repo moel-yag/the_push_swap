@@ -16,7 +16,7 @@ static void	initialize_stack(t_stack **stack_a, int argc, char **argv)
 {
 	parse_input(stack_a, argc, argv);
 	if (!*stack_a)
-		ft_error("Error");
+		ft_error("Error",  NULL);
 }
 
 static void	sort_list(t_stack **stack_a, t_stack **stack_b)
@@ -39,7 +39,7 @@ static void	sort_list(t_stack **stack_a, t_stack **stack_b)
 static int	is_sorted(t_stack *stack)
 {
 	if (!stack)
-		return 1;
+		return (1);
 	while (stack->next)
 	{
 		if (stack->content > stack->next->content)

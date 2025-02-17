@@ -27,7 +27,6 @@ t_stack	*ft_lstmap(t_stack *lst, int (*f)(int), void (*del)(int))
 		new_node = ft_lstnew(content);
 		if (!new_node)
 		{
-			// free(content);
 			ft_lstclear(&new_list, del);
 			return (NULL);
 		}

@@ -15,9 +15,9 @@
 static int	stack_min(t_stack *stack)
 {
 	t_stack	*tmp;
-	int			i;
-	int			index;
-	int			min;
+	int		i;
+	int		index;
+	int		min;
 
 	if (stack)
 	{
@@ -54,7 +54,7 @@ static int	is_sorted(t_stack *stack)
 void	sort_five(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*tmp;
-	int			min;
+	int		min;
 
 	tmp = *stack_a;
 	min = stack_min(tmp);

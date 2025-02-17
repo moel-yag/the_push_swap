@@ -27,6 +27,5 @@ void	push(t_stack **src, t_stack **dst, char c)
 			write(1, "pa\n", 3);
 		else if (c == 'b')
 			write(1, "pb\n", 3);
-		// print_list(*dst);
 	}
 }

@@ -12,34 +12,27 @@
 
 #include "push_swap.h"
 
-// void	give_index_to_node(t_stack **stack)
-// {
-// 	t_stack		*tmp;
-// 	int			index;
-// 	int			len;
-// 	int			*tab;
+char    **ft_split_args(int argc, char **argv)
+{
+    int     i;
+    char    **result;
 
-// 	if (!*stack)
-// 		return ;
-// 	len = ft_lstsize(*stack);
-// 	tab = (int *)malloc(sizeof(int) * len);
-// 	if (!tab)
-// 		return ;
-// 	tmp = *stack;
-// 	initialize_tab(tmp, len, tab);
-// 	sort_tab(tab, len);
-// 	index = 0;
-// 	while (tmp)
-// 	{
-// 		while (index < len)
-// 		{
-// 			if (tmp->content == tab[index])
-//             {
-//                 tmp->index = index;
-//                 break ;
-//             }
-//             index++;
-// 		}
-// 		tmp = tmp->next;
-// 	}
-// }
+    result = malloc(sizeof(char *) * argc);
+    if (!result)
+        return (NULL);
+    i = 1;
+    while (i < argc)
+    {
+        result[i - 1] = strdup(argv[i]);
+        if (!result[i - 1])
+        {
+            while (--i)
+                free(result[i - 1]);
+            free(result);
+            return (NULL);
+        }
+        i++;
+    }
+    result[argc - 1] = NULL;
+    return (result);
+}

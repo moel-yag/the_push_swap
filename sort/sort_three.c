@@ -15,7 +15,7 @@
 static int	stack_min(t_stack *stack)
 {
 	t_stack	*tmp;
-	int			min;
+	int		min;
 
 	min = stack->content;
 	if (stack)
@@ -34,7 +34,7 @@ static int	stack_min(t_stack *stack)
 static int	stack_max(t_stack *stack)
 {
 	t_stack	*tmp;
-	int			max;
+	int		max;
 
 	max = stack->content;
 	if (stack)
@@ -53,7 +53,7 @@ static int	stack_max(t_stack *stack)
 static int	is_sorted(t_stack *stack)
 {
 	if (!stack)
-		return 1;
+		return (1);
 	while (stack->next)
 	{
 		if (stack->content > stack->next->content)

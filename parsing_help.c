@@ -6,7 +6,7 @@
 /*   By: moel-yag <moel-yag@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 16:19:59 by moel-yag          #+#    #+#             */
-/*   Updated: 2025/02/16 16:20:59 by moel-yag         ###   ########.fr       */
+/*   Updated: 2025/02/16 21:56:55 by moel-yag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,18 @@ long ft_atol(const char *str)
 	while (*str >= '0' && *str <= '9')
 	{
 		result = result * 10 + (*str - '0');
+		if (result > 2147483648)
+		    return (2147483649);
 		str++;
 	}
 	return (result * sign);
 }
 
-void ft_error(char *msg)
+void ft_error(char *msg, char *line)
 {
 	ft_putendl_fd(msg, 2);
+	if (line)
+		free(line);
 	exit(1);
 }
 

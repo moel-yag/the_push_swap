@@ -74,5 +74,7 @@ void				ft_lstclear(t_stack **lst, void (*del)(int));
 void				ft_lstiter(t_stack *lst, void (*f)(int));
 t_stack				*ft_lstmap(t_stack *lst, int (*f)(int),
 						void (*del)(int));
+int					count_word(char const *s, char c);
+
 
 #endif

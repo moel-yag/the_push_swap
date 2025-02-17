@@ -37,7 +37,7 @@ static int	get_index_value(t_stack *stack_b, int index)
 		if (stack_b->index == index)
 		{
 			val = stack_b->content;
-			break;
+			break ;
 		}
 		stack_b = stack_b->next;
 	}
@@ -95,9 +95,6 @@ static void	back_to_a(t_stack **stack_a, t_stack **stack_b)
 
 void	sort_stack(t_stack **stack_a, t_stack **stack_b, int flag)
 {
-	// print_list(*stack_a);
 	send_to_b(stack_a, stack_b, flag);
-	// print_list(*stack_b);
-	// exit(0);
 	back_to_a(stack_a, stack_b);
 }

@@ -23,7 +23,6 @@ void	rotate(t_stack **stack, char c)
 		*stack = (*stack)->next;
 		last = *stack;
 		top->next = NULL;
-		// ft_lstadd_back(stack, top);
 		while (last->next)
 			last = last->next;
 		last->next = top;
@@ -49,7 +48,7 @@ void	rrotate(t_stack **stack, char c)
 {
 	t_stack	*last;
 	t_stack	*tmp;
-	int			i;
+	int		i;
 
 	if (ft_lstsize(*stack) > 1)
 	{

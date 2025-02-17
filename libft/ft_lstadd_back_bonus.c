@@ -12,26 +12,6 @@
 
 #include "libft.h"
 
-// static void print_list(t_stack *head)
-// {
-// 	if (head == NULL)
-// 	{
-//         printf("Stack is empty\n");
-//         return ;
-//     }
-//     t_stack *current = head;
-// 	printf("stack: ");
-//     while (1)
-//     {
-//         printf("%d[%d] -> ", current->content, current->index);
-//         current = current->next;
-// 		if (current == NULL)
-// 		{
-// 			printf("NULL\n");
-//             break;
-// 		}
-//     }
-// }
 void	ft_lstadd_back(t_stack **lst, t_stack *new)
 {
 	t_stack	*current;

@@ -1,32 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: moel-yag <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/16 18:30:42 by moel-yag          #+#    #+#             */
+/*   Updated: 2025/02/16 18:30:44 by moel-yag         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap_bonus.h"
 
 // Function to apply a single operation
 void	apply_operations(t_stack **stack_a, t_stack **stack_b, char *operation)
 {
-	if (!ft_strcmp(operation, "sa"))
+	if (!ft_strcmp(operation, "sa\n"))
 		swap(stack_a, 'a');
-	else if (!ft_strcmp(operation, "sb"))
+	else if (!ft_strcmp(operation, "sb\n"))
 		swap(stack_b, 'b');
-	else if (!ft_strcmp(operation, "ss"))
+	else if (!ft_strcmp(operation, "ss\n"))
 		swap_s(stack_a, stack_b, 's');
-	else if (!ft_strcmp(operation, "pa"))
+	else if (!ft_strcmp(operation, "pa\n"))
 		push_stack(stack_a, stack_b, 'a');
-	else if (!ft_strcmp(operation, "pb"))
+	else if (!ft_strcmp(operation, "pb\n"))
 		push_stack(stack_b, stack_a, 'b');
-	else if (!ft_strcmp(operation, "ra"))
+	else if (!ft_strcmp(operation, "ra\n"))
 		rotate(stack_a, 'a');
-	else if (!ft_strcmp(operation, "rb"))
+	else if (!ft_strcmp(operation, "rb\n"))
 		rotate(stack_b, 'b');
-	else if (!ft_strcmp(operation, "rr"))
+	else if (!ft_strcmp(operation, "rr\n"))
 		rotate_r(stack_a, stack_b, 'r');
-	else if (!ft_strcmp(operation, "rra"))
+	else if (!ft_strcmp(operation, "rra\n"))
 		r_rotate(stack_a, 'a');
-	else if (!ft_strcmp(operation, "rrb"))
+	else if (!ft_strcmp(operation, "rrb\n"))
 		r_rotate(stack_b, 'b');
-	else if (!ft_strcmp(operation, "rrr"))
+	else if (!ft_strcmp(operation, "rrr\n"))
 		r_rotate_r(stack_a, stack_b, 'r');
 	else
-		ft_error("Error: Invalid operation");
+		ft_error("Error\n", operation);
 }
 
 // Function to read and apply operations from standard input
@@ -34,10 +46,12 @@ void	read_operations(t_stack **stack_a, t_stack **stack_b)
 {
 	char	*line;
 
-	while (get_next_line(0, &line) > 0)
+	line = get_next_line(0);
+	while (!line)
 	{
 		apply_operations(stack_a, stack_b, line);
 		free(line);
+		line = get_next_line(0);
 	}
 	free(line);
 }
@@ -46,7 +60,7 @@ void	read_operations(t_stack **stack_a, t_stack **stack_b)
 void	checker(t_stack **stack_a, t_stack **stack_b)
 {
 	read_operations(stack_a, stack_b);
-	if (check_sort(*stack_a) && !*stack_b)
+	if (check_sort(!*stack_b && *stack_a))
 		ft_putendl_fd("OK", 1);
 	else
 		ft_putendl_fd("KO", 1);
@@ -59,7 +73,7 @@ int	main(int argc, char **argv)
 	t_stack	*stack_b;
 
 	if (argc < 2)
-		return (0); // No input provided
+		return (0);
 	stack_a = NULL;
 	stack_b = NULL;
 	initialize_stack(&stack_a, argc, argv);

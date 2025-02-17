@@ -22,7 +22,7 @@ static void	ft_free(char **s)
 	free(s);
 }
 
-static int	count_word(char const *s, char c)
+int	count_word(char const *s, char c)
 {
 	int	count;
 	int	flag;

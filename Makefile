@@ -22,7 +22,7 @@ B_OBJ = $(BONUS:.c=.o)
 all : $(LIBFT_NAME) $(NAME)
 
 $(NAME): $(F_OBJ)
-	$(CC) $(CFLAGS)  $(F_OBJ) $(LIBFT_NAME) -o	$@
+	$(CC) $(CFLAGS) $(F_OBJ) $(LIBFT_NAME) -o	$@
 
 bonus = $(B_NAME)
 
@@ -40,4 +40,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY : all bonus clean fclean
+.PHONY : all bonus clean fclean re

@@ -38,5 +38,7 @@ void	ft_free_split(char **split);
 int		is_valid_number(char *str);
 int		has_duplicates(t_stack *stack, int num);
 void	del(int content);
+void	initialize_stack(t_stack **stack_a, int argc, char **argv);
+int     is_sorted(t_stack *stack);
 
 #endif

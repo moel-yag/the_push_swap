@@ -13,7 +13,8 @@ FILES = moves/push.c moves/rotate.c moves/swap.c \
 	sort/sort_stack.c help_functions.c parsing.c parsing_help.c main.c \
 
 BONUS = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
-	checker.c help_functions.c parsing_help.c parsing.c
+	checker.c help_functions.c parsing_help.c parsing.c \
+	moves/push.c moves/rotate.c moves/swap.c sort/sort_stack.c
 
 F_OBJ = $(FILES:.c=.o)
 
@@ -24,19 +25,19 @@ all : $(LIBFT_NAME) $(NAME)
 $(NAME): $(F_OBJ)
 	$(CC) $(CFLAGS) $(F_OBJ) $(LIBFT_NAME) -o	$@
 
-bonus = $(B_NAME)
+bonus : $(B_NAME)
 
 $(B_NAME): $(B_OBJ)
 	$(CC) $(CFLAGS) $(B_OBJ) $(LIBFT_NAME) -o	$@
 
-$(LIBFT_NAME): $(F_OBJ)
+$(LIBFT_NAME): $(F_OBJ) $(B_OBJ)
 	make -C $(LIBFT)
 
 clean :
 		make clean -C $(LIBFT)
-		rm -f $(F_OBJ)
+		rm -f $(F_OBJ) $(B_OBJ)
 fclean : clean
-		rm -f $(NAME)
+		rm -f $(NAME) $(B_NAME)
 
 re : fclean all
 

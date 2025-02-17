@@ -40,17 +40,6 @@ static int	stack_min(t_stack *stack)
 	return (4);
 }
 
-static int	is_sorted(t_stack *stack)
-{
-	while (stack->next)
-	{
-		if (stack->content > stack->next->content)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
-}
-
 void	sort_five(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*tmp;

@@ -50,19 +50,6 @@ static int	stack_max(t_stack *stack)
 	return (max);
 }
 
-static int	is_sorted(t_stack *stack)
-{
-	if (!stack)
-		return (1);
-	while (stack->next)
-	{
-		if (stack->content > stack->next->content)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
-}
-
 void	sort_three(t_stack **stack_a)
 {
 	int	min;

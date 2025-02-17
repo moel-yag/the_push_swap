@@ -14,11 +14,10 @@
 # define PUSH_SWAP_BONUS_H
 
 # include "push_swap.h"
+# include "libft/libft.h"
 # include "get_next_line/get_next_line.h"
 # include <stdbool.h>
-# include "libft/libft.h"
 
-// Function prototypes
 void	apply_moves(t_stack **stack_a, t_stack **stack_b, char *operation);
 void	checker(t_stack **stack_a, t_stack **stack_b);
 void	read_moves(t_stack **stack_a, t_stack **stack_b);

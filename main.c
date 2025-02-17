@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static void	initialize_stack(t_stack **stack_a, int argc, char **argv)
+void	initialize_stack(t_stack **stack_a, int argc, char **argv)
 {
 	parse_input(stack_a, argc, argv);
 	if (!*stack_a)
@@ -34,19 +34,6 @@ static void	sort_list(t_stack **stack_a, t_stack **stack_b)
 		sort_five(stack_a, stack_b);
 	else
 		sort_stack(stack_a, stack_b, size / 15);
-}
-
-static int	is_sorted(t_stack *stack)
-{
-	if (!stack)
-		return (1);
-	while (stack->next)
-	{
-		if (stack->content > stack->next->content)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
 }
 
 int	main(int argc, char **argv)

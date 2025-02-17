@@ -32,6 +32,8 @@ static void	sort_list(t_stack **stack_a, t_stack **stack_b)
 		sort_four(stack_a, stack_b);
 	else if (size == 5)
 		sort_five(stack_a, stack_b);
+	else if (size == 100)
+		sort_stack(stack_a, stack_b, size / 7);
 	else
 		sort_stack(stack_a, stack_b, size / 15);
 }
@@ -40,6 +42,7 @@ int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+	char *str = NULL;
 	int		i;
 
 	if (argc < 2)
@@ -47,7 +50,8 @@ int	main(int argc, char **argv)
 	i = 0;
 	while (i < argc)
 	{
-		if (*argv[i] == '\0')
+		str = ft_strtrim(argv[i], " ");
+		if (*argv[i] == '\0' || (str[0] == '\0'))
 			ft_error("Error", NULL);
 		i++;
 	}

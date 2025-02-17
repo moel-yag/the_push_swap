@@ -19,7 +19,6 @@ void	push_bonus(t_stack **src, t_stack **dst)
 
 	if (*src)
 	{
-		printf("here\n");
 		first = *src;
 		second = (*src)->next;
 		ft_lstadd_front(dst, first);

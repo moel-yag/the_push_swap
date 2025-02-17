@@ -55,19 +55,18 @@ static void	parse_single_string(t_stack **stack, char *str)
 	ft_free_split(numbers);
 }
 
-static void parse_multiple_args(t_stack **stack, int argc, char **argv)
+static void parse_multiple_args(t_stack **stack, int argc, char **argv, int i)
 {
-	int i;
-	char **numbers;
-	long num;
+	int		j;
+	char	**numbers;
+	long	num;
 
-	i = 1;
 	while (i < argc)
 	{
 		numbers = ft_split(argv[i], ' ');
 		if (!numbers)
 			ft_error("Error", NULL);
-		int j = 0;
+		j = 0;
 		while (numbers[j])
 		{
 			if (!is_valid_number(numbers[j]))
@@ -90,5 +89,5 @@ void parse_input(t_stack **stack, int argc, char **argv)
 	if (argc == 2)
 		parse_single_string(stack, argv[1]);
 	else
-		parse_multiple_args(stack, argc, argv);
+		parse_multiple_args(stack, argc, argv, 1);
 }

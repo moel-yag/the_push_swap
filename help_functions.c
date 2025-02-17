@@ -12,27 +12,6 @@
 
 #include "push_swap.h"
 
-char    **ft_split_args(int argc, char **argv)
-{
-    int     i;
-    char    **result;
-
-    result = malloc(sizeof(char *) * argc);
-    if (!result)
-        return (NULL);
-    i = 1;
-    while (i < argc)
-    {
-        result[i - 1] = strdup(argv[i]);
-        if (!result[i - 1])
-        {
-            while (--i)
-                free(result[i - 1]);
-            free(result);
-            return (NULL);
-        }
-        i++;
-    }
-    result[argc - 1] = NULL;
-    return (result);
-}
+// void    **ft_split_args(t_stack **stack, char **numbers, long num)
+// {
+// }

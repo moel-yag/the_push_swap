@@ -16,7 +16,7 @@ static void	initialize_stack(t_stack **stack_a, int argc, char **argv)
 {
 	parse_input(stack_a, argc, argv);
 	if (!*stack_a)
-		ft_error("Error",  NULL);
+		ft_error("Error", NULL);
 }
 
 static void	sort_list(t_stack **stack_a, t_stack **stack_b)
@@ -53,9 +53,17 @@ int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+	int		i;
 
 	if (argc < 2)
 		return (0);
+	i = 0;
+	while (i < argc)
+	{
+		if (*argv[i] == '\0')
+			ft_error("Error", NULL);
+		i++;
+	}
 	stack_a = NULL;
 	stack_b = NULL;
 	initialize_stack(&stack_a, argc, argv);

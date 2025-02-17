@@ -6,7 +6,7 @@
 /*   By: moel-yag <moel-yag@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 16:19:59 by moel-yag          #+#    #+#             */
-/*   Updated: 2025/02/16 21:56:55 by moel-yag         ###   ########.fr       */
+/*   Updated: 2025/02/17 11:45:17 by moel-yag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 int	is_valid_number(char *str)
 {
-  int i;
+	int	i;
 
-  i = 0;
-  if (str[i] == '-' || str[i] == '+')
-	i++;
-  if (!str[i])
-	return (0);
-  while (str[i])
-  {
-	if (!ft_isdigit(str[i]))
-	  return (0);
-	i++;
-  }
-  return (1);
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	if (!str[i])
+		return (0);
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 int	has_duplicates(t_stack *stack, int num)
@@ -41,10 +41,10 @@ int	has_duplicates(t_stack *stack, int num)
 	return (0);
 }
 
-long ft_atol(const char *str)
+long	ft_atol(const char *str)
 {
-	long result;
-	int sign;
+	long	result;
+	int		sign;
 
 	result = 0;
 	sign = 1;
@@ -60,13 +60,13 @@ long ft_atol(const char *str)
 	{
 		result = result * 10 + (*str - '0');
 		if (result > 2147483648)
-		    return (2147483649);
+			return (2147483649);
 		str++;
 	}
 	return (result * sign);
 }
 
-void ft_error(char *msg, char *line)
+void	ft_error(char *msg, char *line)
 {
 	ft_putendl_fd(msg, 2);
 	if (line)
@@ -74,9 +74,9 @@ void ft_error(char *msg, char *line)
 	exit(1);
 }
 
-void ft_free_split(char **split)
+void	ft_free_split(char **split)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (split[i])

@@ -60,6 +60,7 @@ int	main(int argc, char **argv)
 	initialize_stack(&stack_a, argc, argv);
 	if (is_sorted(stack_a) == 0)
 		sort_list(&stack_a, &stack_b);
+	free(str);
 	ft_lstclear(&stack_a, del);
 	ft_lstclear(&stack_b, del);
 	return (0);

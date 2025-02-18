@@ -19,7 +19,7 @@
 # include <stdbool.h>
 # include <signal.h>
 
-void	apply_moves(t_stack **stack_a, t_stack **stack_b, char *operation);
+int     apply_moves(t_stack **stack_a, t_stack **stack_b, char *operation);
 void	checker(t_stack **stack_a, t_stack **stack_b);
 void	read_moves(t_stack **stack_a, t_stack **stack_b);
 void	del(int content);

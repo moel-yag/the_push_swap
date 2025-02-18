@@ -19,7 +19,7 @@ void	initialize_stack(t_stack **stack_a, int argc, char **argv)
 		ft_error("Error", NULL);
 }
 
-void	apply_moves(t_stack **stack_a, t_stack **stack_b, char *operation)
+int	apply_moves(t_stack **stack_a, t_stack **stack_b, char *operation)
 {
 	if (!ft_strncmp(operation, "sa\n"))
 		swap_bonus(stack_a);
@@ -44,7 +44,8 @@ void	apply_moves(t_stack **stack_a, t_stack **stack_b, char *operation)
 	else if (!ft_strncmp(operation, "rrr\n"))
 		rrotate_r_bonus(stack_a, stack_b, 'r');
 	else
-		ft_error("Error\n", operation);
+		return (0);
+	return (1);
 }
 
 void	read_moves(t_stack **stack_a, t_stack **stack_b)
@@ -55,7 +56,12 @@ void	read_moves(t_stack **stack_a, t_stack **stack_b)
 	line = get_next_line(0);
 	while (line)
 	{
-		apply_moves(stack_a, stack_b, line);
+		if(!apply_moves(stack_a, stack_b, line))
+		{
+			ft_lstclear(stack_a, del);
+			ft_lstclear(stack_b, del);
+			ft_error("Error", line);
+		}
 		free(line);
 		line = get_next_line(0);
 	}

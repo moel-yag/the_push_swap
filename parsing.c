@@ -43,12 +43,12 @@ static void	parse_single_string(t_stack **stack, char *str)
 	while (numbers[i])
 	{
 		if (!is_valid_number(numbers[i]))
-			ft_error("Error", NULL);
+			ft_exit(stack, numbers);
 		num = ft_atol(numbers[i]);
 		if (num < INT_MIN || num > INT_MAX)
-			ft_error("Error", NULL);
+			ft_exit(stack, numbers);
 		if (has_duplicates(*stack, (int)num))
-			ft_error("Error", NULL);
+			ft_exit(stack, numbers);
 		add_to_stack(stack, (int)num);
 		i++;
 	}
@@ -70,12 +70,12 @@ static void	parse_multiple_args(t_stack **stack, int argc, char **argv, int i)
 		while (numbers[j])
 		{
 			if (!is_valid_number(numbers[j]))
-				ft_error("Error", NULL);
+				ft_exit(stack, numbers);
 			num = ft_atol(numbers[j]);
 			if (num < INT_MIN || num > INT_MAX)
-				ft_error("Error", NULL);
+				ft_exit(stack, numbers);
 			if (has_duplicates(*stack, (int)num))
-				ft_error("Error", NULL);
+				ft_exit(stack, numbers);
 			add_to_stack(stack, (int)num);
 			j++;
 		}

@@ -24,3 +24,10 @@ int	is_sorted(t_stack *stack)
 	}
 	return (1);
 }
+
+void	ft_exit(t_stack **stack, char **numbers)
+{
+	ft_lstclear(stack, del);
+    ft_free_split(numbers);
+	ft_error("Error", NULL);
+}

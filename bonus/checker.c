@@ -56,7 +56,7 @@ void	read_moves(t_stack **stack_a, t_stack **stack_b)
 	line = get_next_line(0);
 	while (line)
 	{
-		if(!apply_moves(stack_a, stack_b, line))
+		if (!apply_moves(stack_a, stack_b, line))
 		{
 			ft_lstclear(stack_a, del);
 			ft_lstclear(stack_b, del);

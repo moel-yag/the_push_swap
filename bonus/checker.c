@@ -80,9 +80,21 @@ int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+	char	*str;
+	int		i;
 
 	if (argc < 2)
 		return (0);
+	str = NULL;
+	i = 0;
+	while (i < argc)
+	{
+		str = ft_strtrim(argv[i], " ");
+		if (*argv[i] == '\0' || (str[0] == '\0'))
+			ft_error("Error", str);
+		free(str);
+		i++;
+	}
 	stack_a = NULL;
 	stack_b = NULL;
 	initialize_stack(&stack_a, argc, argv);

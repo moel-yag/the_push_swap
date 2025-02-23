@@ -98,5 +98,3 @@ The checker outputs:
 ## Author
 
 - GitHub: https\://github.com/moel-yag
-- Email: [your.email@example.com](mailto\:your.email@example.com)
-
